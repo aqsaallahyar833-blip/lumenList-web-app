@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LumenList</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+    <main class="app-shell">
+        <section class="todo-panel">
+            <header class="panel-header">
+                <div>
+                    <p class="overline">Task manager</p>
+                    <h1>LumenList</h1>
+                </div>
+                <button id="clear-all" class="ghost-button">Clear all</button>
+            </header>
+
+            <form id="todo-form" class="todo-form" autocomplete="off">
+                <label class="visually-hidden" for="todo-input">Add new task</label>
+                <input id="todo-input" type="text" placeholder="Add a new task..." />
+                <button type="submit">Add</button>
+            </form>
+
+            <div class="todo-stats">
+                <p><span id="remaining-count">0</span> tasks remaining</p>
+            </div>
+
+            <ul id="todo-list" class="todo-list" aria-live="polite"></ul>
+        </section>
+    </main>
+
+    <template id="todo-item-template">
+        <li class="todo-item">
+            <label class="checkbox-wrap">
+                <input type="checkbox" class="toggle-complete" />
+                <span class="checkmark"></span>
+            </label>
+            <div class="todo-content">
+                <p class="todo-text"></p>
+                <input class="todo-edit" type="text" aria-label="Edit task" />
+            </div>
+            <div class="item-actions">
+                <button class="edit-button" type="button">Edit</button>
+                <button class="delete-button" type="button">Delete</button>
+            </div>
+        </li>
+    </template>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,235 @@
+:root {
+  color-scheme: dark;
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #0f172a;
+  color: #e2e8f0;
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  background: radial-gradient(circle at top, #1e293b 0%, #0b1120 55%);
+}
+
+.app-shell {
+  width: min(100%, 640px);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  border-radius: 28px;
+  background: rgba(15, 23, 42, 0.92);
+  box-shadow: 0 30px 80px rgba(15, 23, 42, 0.25);
+  backdrop-filter: blur(18px);
+  padding: 2rem;
+}
+
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+}
+
+.overline {
+  margin: 0 0 0.35rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #7c93b4;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  letter-spacing: -0.04em;
+}
+
+.ghost-button {
+  border: 1px solid rgba(148, 163, 184, 0.28);
+  background: transparent;
+  color: #cbd5e1;
+  border-radius: 999px;
+  padding: 0.75rem 1.2rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.ghost-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(148, 163, 184, 0.55);
+}
+
+.todo-form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.todo-form input {
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  background: rgba(148, 163, 184, 0.05);
+  color: #f8fafc;
+  font-size: 1rem;
+}
+
+.todo-form button {
+  border: none;
+  border-radius: 14px;
+  padding: 1rem 1.3rem;
+  background: linear-gradient(135deg, #6366f1, #0ea5e9);
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.todo-form button:hover {
+  filter: brightness(1.05);
+}
+
+.todo-stats {
+  margin-bottom: 1rem;
+  color: #94a3b8;
+}
+
+.todo-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.85rem;
+}
+
+.todo-item {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.1rem;
+  border-radius: 18px;
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  background: rgba(148, 163, 184, 0.04);
+}
+
+.checkbox-wrap {
+  position: relative;
+  width: 1.4rem;
+  height: 1.4rem;
+  display: grid;
+  place-items: center;
+}
+
+.checkbox-wrap input {
+  appearance: none;
+  width: 100%;
+  height: 100%;
+  border: 2px solid #64748b;
+  border-radius: 0.5rem;
+  background: transparent;
+  cursor: pointer;
+}
+
+.checkbox-wrap input:checked {
+  background: linear-gradient(135deg, #38bdf8, #7c3aed);
+  border-color: transparent;
+}
+
+.checkmark {
+  position: absolute;
+  width: 0.6rem;
+  height: 0.35rem;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: rotate(-45deg);
+}
+
+.checkbox-wrap input:checked + .checkmark {
+  border-color: white;
+}
+
+.todo-content {
+  min-width: 0;
+}
+
+.todo-text {
+  margin: 0;
+  color: #e2e8f0;
+  font-size: 1rem;
+  word-break: break-word;
+}
+
+.todo-text.completed {
+  color: #94a3b8;
+  text-decoration: line-through;
+}
+
+.todo-edit {
+  display: none;
+  width: 100%;
+  border: 1px solid rgba(148, 163, 184, 0.18);
+  border-radius: 14px;
+  padding: 0.9rem 1rem;
+  background: rgba(15, 23, 42, 0.96);
+  color: #f8fafc;
+}
+
+.todo-item.editing .todo-text {
+  display: none;
+}
+
+.todo-item.editing .todo-edit {
+  display: block;
+}
+
+.item-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.item-actions button {
+  border: none;
+  border-radius: 999px;
+  padding: 0.7rem 0.95rem;
+  background: rgba(148, 163, 184, 0.08);
+  color: #cbd5e1;
+  cursor: pointer;
+}
+
+.item-actions button:hover {
+  background: rgba(148, 163, 184, 0.16);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0,0,0,0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@media (max-width: 520px) {
+  .todo-item {
+    grid-template-columns: auto 1fr;
+  }
+
+  .item-actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
